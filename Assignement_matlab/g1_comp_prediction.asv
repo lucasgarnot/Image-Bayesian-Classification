@@ -1,0 +1,27 @@
+function [ X, w_hat, predictions,accuracy ] = g1_comp_prediction(data,labels,data_test,labels_test,K )
+% initialize parameters
+N = size(data,1);
+M = size(data_test,1);
+X = ones(N,1);
+
+% compute X for K dimensions using the data
+for k = 1:K
+    X = [X, data.^k];
+end
+
+%compute w_hat
+w_hat = pinv(X'*X)*X'*labels;
+
+%compute X_test
+X_test = ones(M,1);
+for k = 1:K
+    X_test = [X_test, data_test.^k];
+end
+
+% compute the predictions
+predictions = X_test*w_hat;
+
+%compute the accuracy
+accuracy = sum(predictions == labels_test);
+end
+

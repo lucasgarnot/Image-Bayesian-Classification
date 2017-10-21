@@ -1,0 +1,20 @@
+function [ layer ] = h1_conv_net(data,filters,ratio)
+    [N,k]=size(data);
+    depth = size(filters,2);
+    depth2 = size(data,4);
+    i=1;
+    l=sqrt(k);
+    data = reshape(data,[N,l,l]);
+    
+    a = f4_down(data(:,:,:,1),1);
+    [r,s,t] = size(a);
+    layer = ones(r,s,t,depth*depth0);
+    layer(:,:,:,1) = a;
+
+    for i = 2:depth
+        a = f4_down(imfilter(data,filters{i}),ratio);
+        layer(:,:,:,i) = a;
+    end
+    
+end
+
