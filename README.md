@@ -1,1 +1,1 @@
-# Image-Bayesian-Classification - Matlab - Eurecom France - 2017
+# Image Bayesian Classification - Matlab - Eurecom France - 2017
